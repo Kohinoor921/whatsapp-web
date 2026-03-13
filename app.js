@@ -944,7 +944,9 @@ async function generateAndSendPaymentLink(phone) {
    } catch (err) { console.error("RP Error", err); }
 }
 
-
+app.get("/", (req, res) => {
+  res.send("Backend server is running successfully");
+});
 // ==============================================================
 // 6. START SERVER
 // ==============================================================
