@@ -947,6 +947,9 @@ async function generateAndSendPaymentLink(phone) {
 app.get("/", (req, res) => {
   res.send("Backend server is running successfully");
 });
+app.get('/test', (req, res) => {
+    res.send('Server is live ✅');
+});
 // ==============================================================
 // 6. START SERVER
 // ==============================================================
