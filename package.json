@@ -4,7 +4,7 @@
   "description": "WhatsApp Webhook + Razorpay + AWS S3",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app_old.js"
   },
   "engines": {
     "node": "18.x"
