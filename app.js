@@ -950,6 +950,37 @@ app.get("/", (req, res) => {
 app.get('/test', (req, res) => {
     res.send('Server is live ✅');
 });
+// =======================
+// TEST ROUTE: HELLO WORLD TEMPLATE
+// =======================
+app.get('/hello', async (req, res) => {
+    try {
+        const response = await axios.post(
+            `https://graph.facebook.com/v21.0/${PHONE_NUMBER_ID}/messages`,
+            {
+                messaging_product: "whatsapp",
+                to: "YOUR_PHONE_NUMBER",
+                type: "template",
+                template: {
+                    name: "hello_world",
+                    language: { code: "en_US" }
+                }
+            },
+            {
+                headers: {
+                    Authorization: `Bearer ${WHATSAPP_TOKEN}`,
+                    "Content-Type": "application/json"
+                }
+            }
+        );
+
+        console.log("Hello World sent:", response.data);
+        res.send("Hello World template sent!");
+    } catch (err) {
+        console.error(err.response.data);
+        res.send("Error sending message");
+    }
+});
 // ==============================================================
 // 6. START SERVER
 // ==============================================================
