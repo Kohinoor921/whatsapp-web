@@ -1005,7 +1005,21 @@ app.get('/trigger/welcome', async (req, res) => {
    await sendWelcomeBrochure(phone);
    res.send(`✅ Sent Welcome Brochure to ${phone}`);
 });
+// TEST FLOW: Hello World Message
+// Usage: https://whatsapp-web-1200.onrender.com/trigger/hello?phone=919876543210
+app.get('/trigger/hello', async (req, res) => {
+    const phone = req.query.phone;
 
+    if (!phone) {
+        return res.status(400).send("Error: Missing phone number. Use ?phone=91...");
+    }
+
+    console.log(`TRIGGER: Sending Hello World to ${phone}`);
+
+    await sendMessage(phone, "Hello World");
+
+    res.send(`Sent Hello World to ${phone}`);
+});
 
 // TEST FLOW 2: Registration Form (Opens the Flow)
 // Usage: http://localhost:3000/trigger/register?phone=919876543210
